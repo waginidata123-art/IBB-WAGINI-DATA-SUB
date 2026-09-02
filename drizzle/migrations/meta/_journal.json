@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1788337540023,
+      "tag": "0000_vtu_platform_foundation",
+      "breakpoints": true
+    }
+  ]
 }
