@@ -10,7 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { formatNaira } from "@/lib/format";
 
-export type NavItem = { label: string; to: string; icon: LucideIcon; badge?: number };
+export type NavItem = { label: string; to: string; icon: LucideIcon; badge?: number | undefined };
 
 export function AppShell({
   nav,
@@ -28,10 +28,10 @@ export function AppShell({
   title: string;
   userName: string;
   userEmail: string;
-  isAdmin?: boolean;
-  walletBalance?: number;
-  unread?: number;
-  variant?: "user" | "admin";
+  isAdmin?: boolean | undefined;
+  walletBalance?: number | undefined;
+  unread?: number | undefined;
+  variant?: "user" | "admin" | undefined;
 }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();

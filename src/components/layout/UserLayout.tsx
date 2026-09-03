@@ -55,7 +55,7 @@ export function UserLayout({
     <AppShell
       nav={nav}
       title={title}
-      userName={profile?.full_name || user.user_metadata?.full_name || ""}
+      userName={profile?.full_name || (user.user_metadata?.['full_name'] as string | undefined) || ""}
       userEmail={user.email ?? ""}
       isAdmin={roles?.includes("admin")}
       walletBalance={wallet ? Number(wallet.balance) : undefined}

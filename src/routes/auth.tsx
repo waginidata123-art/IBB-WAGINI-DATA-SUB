@@ -60,7 +60,7 @@ function AuthPage() {
     try {
       if (mode === "register") {
         const parsed = registerSchema.safeParse(form);
-        if (!parsed.success) return toast.error(parsed.error.issues[0].message);
+        if (!parsed.success) { toast.error(parsed.error.issues[0]?.message ?? "Invalid input"); return; }
         const { data, error } = await supabase.auth.signUp({
           email: parsed.data.email,
           password: parsed.data.password,
@@ -69,22 +69,22 @@ function AuthPage() {
             data: { full_name: parsed.data.fullName, phone: parsed.data.phone },
           },
         });
-        if (error) return toast.error(friendly(error.message));
+        if (error) { toast.error(friendly(error.message)); return; }
         if (data.session) navigate({ to: "/dashboard", replace: true });
         else setSent(parsed.data.email);
       } else if (mode === "login") {
         const parsed = loginSchema.safeParse(form);
-        if (!parsed.success) return toast.error(parsed.error.issues[0].message);
+        if (!parsed.success) { toast.error(parsed.error.issues[0]?.message ?? "Invalid input"); return; }
         const { error } = await supabase.auth.signInWithPassword(parsed.data);
-        if (error) return toast.error(friendly(error.message));
+        if (error) { toast.error(friendly(error.message)); return; }
         navigate({ to: "/dashboard", replace: true });
       } else {
         const email = z.string().email().safeParse(form.email.trim());
-        if (!email.success) return toast.error("Enter a valid email");
+        if (!email.success) { toast.error("Enter a valid email"); return; }
         const { error } = await supabase.auth.resetPasswordForEmail(email.data, {
           redirectTo: `${window.location.origin}/reset-password`,
         });
-        if (error) return toast.error(friendly(error.message));
+        if (error) { toast.error(friendly(error.message)); return; }
         toast.success("If that email exists, a reset link is on its way.");
         setMode("login");
       }

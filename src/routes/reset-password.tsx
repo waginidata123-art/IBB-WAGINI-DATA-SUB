@@ -39,12 +39,12 @@ function ResetPassword() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password.length < 8) return toast.error("Password must be at least 8 characters");
-    if (password !== confirm) return toast.error("Passwords do not match");
+    if (password.length < 8) { toast.error("Password must be at least 8 characters"); return; }
+    if (password !== confirm) { toast.error("Passwords do not match"); return; }
     setLoading(true);
     const { error } = await supabase.auth.updateUser({ password });
     setLoading(false);
-    if (error) return toast.error("Could not update password. Request a new link and try again.");
+    if (error) { toast.error("Could not update password. Request a new link and try again."); return; }
     toast.success("Password updated");
     navigate({ to: "/dashboard", replace: true });
   };
