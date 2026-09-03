@@ -14,6 +14,13 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
+import { Route as AuthenticatedAirtimeRouteImport } from './routes/_authenticated/airtime'
+import { Route as AuthenticatedCableRouteImport } from './routes/_authenticated/cable'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDataRouteImport } from './routes/_authenticated/data'
+import { Route as AuthenticatedElectricityRouteImport } from './routes/_authenticated/electricity'
+import { Route as AuthenticatedExamsRouteImport } from './routes/_authenticated/exams'
+import { Route as AuthenticatedNinRouteImport } from './routes/_authenticated/nin'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -39,18 +46,68 @@ const AuthenticatedAdminRouteRoute = AuthenticatedAdminRouteRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedAirtimeRoute = AuthenticatedAirtimeRouteImport.update({
+  id: '/airtime',
+  path: '/airtime',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCableRoute = AuthenticatedCableRouteImport.update({
+  id: '/cable',
+  path: '/cable',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDataRoute = AuthenticatedDataRouteImport.update({
+  id: '/data',
+  path: '/data',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedElectricityRoute =
+  AuthenticatedElectricityRouteImport.update({
+    id: '/electricity',
+    path: '/electricity',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedExamsRoute = AuthenticatedExamsRouteImport.update({
+  id: '/exams',
+  path: '/exams',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedNinRoute = AuthenticatedNinRouteImport.update({
+  id: '/nin',
+  path: '/nin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/admin': typeof AuthenticatedAdminRouteRoute
+  '/airtime': typeof AuthenticatedAirtimeRoute
+  '/cable': typeof AuthenticatedCableRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/data': typeof AuthenticatedDataRoute
+  '/electricity': typeof AuthenticatedElectricityRoute
+  '/exams': typeof AuthenticatedExamsRoute
+  '/nin': typeof AuthenticatedNinRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/admin': typeof AuthenticatedAdminRouteRoute
+  '/airtime': typeof AuthenticatedAirtimeRoute
+  '/cable': typeof AuthenticatedCableRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/data': typeof AuthenticatedDataRoute
+  '/electricity': typeof AuthenticatedElectricityRoute
+  '/exams': typeof AuthenticatedExamsRoute
+  '/nin': typeof AuthenticatedNinRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -59,12 +116,41 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteRoute
+  '/_authenticated/airtime': typeof AuthenticatedAirtimeRoute
+  '/_authenticated/cable': typeof AuthenticatedCableRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/data': typeof AuthenticatedDataRoute
+  '/_authenticated/electricity': typeof AuthenticatedElectricityRoute
+  '/_authenticated/exams': typeof AuthenticatedExamsRoute
+  '/_authenticated/nin': typeof AuthenticatedNinRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/reset-password' | '/admin'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/admin'
+    | '/airtime'
+    | '/cable'
+    | '/dashboard'
+    | '/data'
+    | '/electricity'
+    | '/exams'
+    | '/nin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/reset-password' | '/admin'
+  to:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/admin'
+    | '/airtime'
+    | '/cable'
+    | '/dashboard'
+    | '/data'
+    | '/electricity'
+    | '/exams'
+    | '/nin'
   id:
     | '__root__'
     | '/'
@@ -72,6 +158,13 @@ export interface FileRouteTypes {
     | '/auth'
     | '/reset-password'
     | '/_authenticated/admin'
+    | '/_authenticated/airtime'
+    | '/_authenticated/cable'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/data'
+    | '/_authenticated/electricity'
+    | '/_authenticated/exams'
+    | '/_authenticated/nin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -118,15 +211,78 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/airtime': {
+      id: '/_authenticated/airtime'
+      path: '/airtime'
+      fullPath: '/airtime'
+      preLoaderRoute: typeof AuthenticatedAirtimeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cable': {
+      id: '/_authenticated/cable'
+      path: '/cable'
+      fullPath: '/cable'
+      preLoaderRoute: typeof AuthenticatedCableRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/data': {
+      id: '/_authenticated/data'
+      path: '/data'
+      fullPath: '/data'
+      preLoaderRoute: typeof AuthenticatedDataRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/electricity': {
+      id: '/_authenticated/electricity'
+      path: '/electricity'
+      fullPath: '/electricity'
+      preLoaderRoute: typeof AuthenticatedElectricityRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/exams': {
+      id: '/_authenticated/exams'
+      path: '/exams'
+      fullPath: '/exams'
+      preLoaderRoute: typeof AuthenticatedExamsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/nin': {
+      id: '/_authenticated/nin'
+      path: '/nin'
+      fullPath: '/nin'
+      preLoaderRoute: typeof AuthenticatedNinRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminRouteRoute: typeof AuthenticatedAdminRouteRoute
+  AuthenticatedAirtimeRoute: typeof AuthenticatedAirtimeRoute
+  AuthenticatedCableRoute: typeof AuthenticatedCableRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDataRoute: typeof AuthenticatedDataRoute
+  AuthenticatedElectricityRoute: typeof AuthenticatedElectricityRoute
+  AuthenticatedExamsRoute: typeof AuthenticatedExamsRoute
+  AuthenticatedNinRoute: typeof AuthenticatedNinRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminRouteRoute: AuthenticatedAdminRouteRoute,
+  AuthenticatedAirtimeRoute: AuthenticatedAirtimeRoute,
+  AuthenticatedCableRoute: AuthenticatedCableRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDataRoute: AuthenticatedDataRoute,
+  AuthenticatedElectricityRoute: AuthenticatedElectricityRoute,
+  AuthenticatedExamsRoute: AuthenticatedExamsRoute,
+  AuthenticatedNinRoute: AuthenticatedNinRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
