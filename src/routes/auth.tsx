@@ -99,7 +99,7 @@ function AuthPage() {
       <div className="pointer-events-none absolute inset-0 grid-pattern" />
       <div className="relative mx-auto grid min-h-screen max-w-6xl lg:grid-cols-2">
         {/* Brand panel */}
-        <div className="hidden flex-col justify-between p-12 lg:flex">
+        <div className="hidden flex-col justify-center gap-10 p-12 lg:flex">
           <Link to="/">
             <Logo size="lg" />
           </Link>
