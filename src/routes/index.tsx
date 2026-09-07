@@ -154,7 +154,7 @@ function Landing() {
           {SERVICE_ORDER.map((code) => {
             const meta = SERVICE_META[code];
             const svc = services?.find((s) => s.code === code);
-            const enabled = svc?.enabled ?? true;
+            const enabled = svc ? svc.enabled : false;
             return (
               <Link key={code} to="/auth" className="group relative overflow-hidden rounded-3xl border border-border/70 bg-gradient-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
                 <div className="flex items-start justify-between">
