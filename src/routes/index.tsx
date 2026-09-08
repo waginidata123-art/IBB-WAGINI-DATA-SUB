@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Logo, LOGO_URL } from "@/components/brand/Logo";
+import { ThemeToggle } from "@/components/theme/theme";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { supabase } from "@/integrations/supabase/client";
@@ -86,6 +87,7 @@ function Landing() {
             <a href="#faq" className="hover:text-foreground">FAQ</a>
           </nav>
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             {user ? (
               <Button asChild variant="hero"><Link to="/dashboard">Dashboard <ArrowRight /></Link></Button>
             ) : (
