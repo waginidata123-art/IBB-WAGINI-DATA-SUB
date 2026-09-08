@@ -9,6 +9,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { formatNaira } from "@/lib/format";
+import { ThemeToggle } from "@/components/theme/theme";
+import { BottomNav } from "@/components/layout/BottomNav";
 
 export type NavItem = { label: string; to: string; icon: LucideIcon; badge?: number | undefined };
 
@@ -151,6 +153,7 @@ export function AppShell({
           </Sheet>
           <h2 className="font-display text-base font-bold text-foreground sm:text-lg">{title}</h2>
           <div className="ml-auto flex items-center gap-2">
+            <ThemeToggle className="hidden sm:inline-flex" />
             {walletBalance !== undefined && (
               <Link
                 to="/wallet"
@@ -172,8 +175,9 @@ export function AppShell({
             </Link>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+        <main className="mx-auto w-full max-w-7xl px-4 py-6 pb-28 sm:px-6 lg:px-8 lg:pb-8">{children}</main>
       </div>
+      {variant === "user" && <BottomNav />}
     </div>
   );
 }
