@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useServices } from "@/hooks/useAuth";
 import { SERVICE_META, type ServiceCode } from "@/lib/services";
 import { formatNaira } from "@/lib/format";
+import { BrandChip, BrandMark } from "@/components/brand/BrandMark";
 
 /**
  * Phase 1 service page: reads availability, limits and the admin-managed
@@ -96,10 +97,8 @@ export function ServicePage({ user, code }: { user: User; code: ServiceCode }) {
                     Available {code === "electricity" ? "providers" : code === "exams" ? "exam bodies" : "networks"}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {networks.map((n) => (
-                      <span key={n} className="rounded-lg border border-border bg-secondary px-3 py-1.5 text-sm font-semibold">
-                        {n}
-                      </span>
+                    {networks.filter(Boolean).map((n) => (
+                      <BrandChip key={n} name={n} />
                     ))}
                   </div>
                 </div>
@@ -121,7 +120,16 @@ export function ServicePage({ user, code }: { user: User; code: ServiceCode }) {
                         .map((p) => (
                           <tr key={p.id}>
                             <td className="px-4 py-2.5 font-medium">{p.name}</td>
-                            <td className="px-4 py-2.5 text-muted-foreground">{p.network}</td>
+                            <td className="px-4 py-2.5">
+                              {p.network ? (
+                                <span className="inline-flex items-center gap-2 text-muted-foreground">
+                                  <BrandMark name={p.network} size="sm" />
+                                  {p.network}
+                                </span>
+                              ) : (
+                                "—"
+                              )}
+                            </td>
                             <td className="px-4 py-2.5 text-right font-bold">{formatNaira(p.selling_price)}</td>
                           </tr>
                         ))}

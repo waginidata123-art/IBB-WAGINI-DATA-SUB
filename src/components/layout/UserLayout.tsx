@@ -2,6 +2,7 @@ import {
   LayoutDashboard,
   Wallet,
   ReceiptText,
+  Grid2x2,
   Bell,
   LifeBuoy,
   UserRound,
@@ -39,6 +40,7 @@ export function UserLayout({
 
   const nav: NavItem[] = [
     { label: "Dashboard", to: "/dashboard", icon: LayoutDashboard },
+    { label: "All Services", to: "/services", icon: Grid2x2 },
     ...SERVICE_ORDER.map((c) => ({
       label: SERVICE_META[c].label,
       to: SERVICE_META[c].path,

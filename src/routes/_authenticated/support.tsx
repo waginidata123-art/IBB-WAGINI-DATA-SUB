@@ -27,20 +27,20 @@ function SupportPage() {
     },
   });
 
-  const email = settings?.["support_email"] ?? "";
-  const phone = settings?.["support_phone"] ?? "";
+  const email = settings?.["support_email"] || "ibbwaginidatasub@gmail.com";
+  const phone = settings?.["support_phone"] || "09162624218";
 
   return (
     <UserLayout user={user} title="Support">
       <PageHeader title="Support" description="We're here to help with any transaction or account issue." />
       <div className="grid gap-4 sm:grid-cols-3">
         <a href={`mailto:${email}`} className="rounded-2xl border border-border/70 bg-card p-5 shadow-card transition-colors hover:border-primary/40">
-          <Mail className="h-5 w-5 text-primary-glow" /><p className="mt-3 font-semibold">Email</p><p className="text-sm text-muted-foreground">{email || "—"}</p>
+          <Mail className="h-5 w-5 text-primary-glow" /><p className="mt-3 font-semibold">Email</p><p className="text-sm text-muted-foreground">{email}</p>
         </a>
         <a href={`tel:${phone}`} className="rounded-2xl border border-border/70 bg-card p-5 shadow-card transition-colors hover:border-primary/40">
-          <Phone className="h-5 w-5 text-primary-glow" /><p className="mt-3 font-semibold">Phone</p><p className="text-sm text-muted-foreground">{phone || "—"}</p>
+          <Phone className="h-5 w-5 text-primary-glow" /><p className="mt-3 font-semibold">Phone</p><p className="text-sm text-muted-foreground">{phone}</p>
         </a>
-        <a href={`https://wa.me/${phone.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" className="rounded-2xl border border-border/70 bg-card p-5 shadow-card transition-colors hover:border-primary/40">
+        <a href={`https://wa.me/234${phone.replace(/\D/g, "").replace(/^0/, "")}`} target="_blank" rel="noreferrer" className="rounded-2xl border border-border/70 bg-card p-5 shadow-card transition-colors hover:border-primary/40">
           <MessageCircle className="h-5 w-5 text-success" /><p className="mt-3 font-semibold">WhatsApp</p><p className="text-sm text-muted-foreground">Chat with support</p>
         </a>
       </div>
